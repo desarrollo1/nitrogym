@@ -1,0 +1,11 @@
+*.pyc
+data/
+.pydevproject
+.settings/
+.project
+*README.txt*
+devdata.db
+.tmp_*
+*.ropeproject*
+*.coverage*
+.metadata/
