@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 """Main Controller"""
 
-from tg import expose, flash, require, url, request, redirect
+from tg import expose, flash, require, url, request, redirect, tmpl_context, validate
 from pylons.i18n import ugettext as _, lazy_ugettext as l_
 from tgext.admin.tgadminconfig import TGAdminConfig
 from tgext.admin.controller import AdminController
@@ -13,6 +13,8 @@ from nitrogym import model
 from nitrogym.controllers.secure import SecureController
 
 from nitrogym.controllers.error import ErrorController
+from nitrogym.widgets.persona import persona_form, persona_form2
+
 
 __all__ = ['RootController']
 
@@ -107,3 +109,17 @@ class RootController(BaseController):
         """
         flash(_('We hope to see you soon!'))
         redirect(came_from)
+
+    @validate(persona_form)
+    @expose('json')
+    def guardar(self, **kw):
+        e =  tmpl_context.form_errors
+        if not e:
+            e['__success__'] = u'Actualizado...'
+        
+        return e
+
+    @expose('nitrogym.templates.form')
+    def form(self, **kw):
+        
+        return dict(form=persona_form, form2=persona_form2)

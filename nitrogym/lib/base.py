@@ -7,6 +7,11 @@ from tg.render import render
 from tg import request
 from pylons.i18n import _, ungettext, N_
 import nitrogym.model as model
+from tw.jquery import jquery_js
+from tw.jquery import JSLink
+
+j = JSLink(link='/js/jquery.form.js')
+
 
 __all__ = ['BaseController']
 
@@ -26,6 +31,8 @@ class BaseController(TGController):
         # the request is routed to. This routing information is
         # available in environ['pylons.routes_dict']
 
+        jquery_js.inject()
+        j.inject()
         request.identity = request.environ.get('repoze.who.identity')
         tmpl_context.identity = request.identity
         return TGController.__call__(self, environ, start_response)

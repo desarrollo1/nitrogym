@@ -1,0 +1,57 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+                      "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:py="http://genshi.edgewall.org/"
+      xmlns:xi="http://www.w3.org/2001/XInclude">
+
+  <xi:include href="master.html" />
+
+<head>
+  <meta content="text/html; charset=UTF-8" http-equiv="content-type" py:replace="''"/>
+  <title>Welcome to TurboGears 2.1, standing on the
+  shoulders of giants, since 2007</title>
+  
+  
+  <script>
+  	
+	function showResponse(responseText, statusText, xhr, form){
+		
+		//form.clearForm();
+		form.data('success')(form);
+		//alert(form('options'));
+		
+	}
+	
+// prepare the form when the DOM is ready 
+$(document).ready(function() { 
+    var options = { 
+        success:   showResponse, //successForm,    //showResponse,  // post-submit callback 
+        url: '/guardar',
+		xxx: 'hola'
+
+    }; 
+	
+	
+	function echo(form)
+	{
+		form.clearForm();
+	}
+ 
+    // bind form using 'ajaxForm' 
+    //$('#persona_form').ajaxForm(options); 
+	//$('#persona_form').data('success', alert);
+    //$('#persona_form2').ajaxForm(options).data('success', echo);; 
+}); 
+
+
+  </script>
+  
+</head>
+
+<body>
+
+	${form()}
+	${form2()}
+
+</body>
+</html>
