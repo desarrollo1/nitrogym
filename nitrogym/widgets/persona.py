@@ -45,6 +45,8 @@ class PersonaForm(AjaxForm): #(twf.TableForm):
              twf.RadioButtonList('tipodoc_id', label_text='Tipo Documento', validator=twv.Int(if_missing=None)),
              twf.TextField('nrodoc', label_text='Nro. Documento', validator=twv.String()),
              AutoCompleteField('ocupacion_nombre', label_text='Ocupacion', validator=twv.String(), url_data='/persona/fetch_ocupacion', matchContains=False),
+             twf.TextField('horario', label_text='Horario', validator=twv.TimeConverter),
+             
              twf.TextField('email', validator=twv.Email(), label_text='Email', ),
              ]
     
