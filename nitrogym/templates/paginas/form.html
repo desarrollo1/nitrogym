@@ -1,0 +1,12 @@
+<div xmlns="http://www.w3.org/1999/xhtml" 
+	xmlns:py="http://genshi.edgewall.org/" 
+	id='div_${form.id}'
+	align='center'>
+    
+        <h3>${value_of('titulo')}</h3>
+        ${form(value_of('value'), action=value_of('action', 'guardar'), child_args=value_of('child_args', {}))}
+		<br />
+		<span class='pie'>(*)requerido</span>
+		<span id='count3'></span>
+	
+</div>

@@ -59,4 +59,15 @@ def init_model(engine):
 
 
 # Import your model modules here.
-from nitrogym.model.auth import User, Group, Permission
+#from nitrogym.model.auth import User, Group, Permission
+
+from nitrogym.model.autenticacion import Usuario, Grupo, Permiso
+from nitrogym.model.lista import Lista, Item
+from nitrogym.model.blob import Blob
+from nitrogym.model.persona import Persona, RelacionPersona
+from nitrogym.model.localizacion import Distrito, Localizacion
+
+#from nitrogym.model.localizacion import Pais
+
+
+

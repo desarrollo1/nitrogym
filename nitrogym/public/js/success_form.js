@@ -22,7 +22,7 @@ function successForm(responseText, statusText, xhr, form){
         n++;
     }
     
-    /* mensaje para el usuario */
+    /* mensaje final para el usuario */
     if (__success__ = json.__success__) {
         delete json.__success__;
     }
@@ -30,15 +30,35 @@ function successForm(responseText, statusText, xhr, form){
     jQuery.each(json, function(name, value){
         /* inserta los mensajes de errores */
         n++;
-        form.find("td").has("* [name='" + name + "']").append("<span class='fielderror'>" + value + "</span>");
+		form.find("td").has("* [id='" + form.attr("id") + "_" + name + "']"). 
+		append("<span class='fielderror'>" + value + "</span>");
+
+        //form.find("td").has("* [name='" + name + "']").append("<span class='fielderror'>" + value + "</span>");
+		//alert(value);
     });
     
     if (n == 0) {
         /* no hay errores, con exito */
-        alert('hecho');
+        //alert('hecho');
         if (__success__) 
             form.prepend("<div class='fieldok'>" + __success__ + "</div>");
-        if (success = form.data('on_success')(form)) 
-            on_success(form);
+        //if (success = form.data('on_success')(form)) 
+        //    on_success(form);
+		return true;
+    }
+	
+	return false;
+}
+
+
+/* modelo de uso para los formularios */
+function success_form(responseText, statusText, xhr, form)
+{
+    if(successForm(responseText, statusText, xhr, form))
+    {
+        form.clearForm();
+    }
+    else
+    {
     }
 }

@@ -13,8 +13,11 @@ from nitrogym import model
 from nitrogym.controllers.secure import SecureController
 
 from nitrogym.controllers.error import ErrorController
-from nitrogym.widgets.persona import persona_form, persona_form2
+from nitrogym.widgets.persona import persona_form
+from nitrogym.controllers.persona import PersonaController
+from nitrogym.controllers.localizacion import LocalizacionController
 
+from base import localizacion_url
 
 __all__ = ['RootController']
 
@@ -38,6 +41,8 @@ class RootController(BaseController):
     admin = AdminController(model, DBSession, config_type=TGAdminConfig)
 
     error = ErrorController()
+    persona = PersonaController()
+    localizacion = LocalizacionController(localizacion_url)
 
     @expose('nitrogym.templates.index')
     def index(self):
@@ -122,4 +127,4 @@ class RootController(BaseController):
     @expose('nitrogym.templates.form')
     def form(self, **kw):
         
-        return dict(form=persona_form, form2=persona_form2)
+        return dict(form=persona_form)
