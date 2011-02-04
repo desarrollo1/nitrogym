@@ -64,7 +64,7 @@ def init_model(engine):
 from nitrogym.model.autenticacion import Usuario, Grupo, Permiso
 from nitrogym.model.lista import Lista, Item
 from nitrogym.model.blob import Blob
-from nitrogym.model.persona import Persona, RelacionPersona
+from nitrogym.model.persona import Persona, RelacionPersona, Ocupacion
 from nitrogym.model.localizacion import Distrito, Localizacion
 
 #from nitrogym.model.localizacion import Pais

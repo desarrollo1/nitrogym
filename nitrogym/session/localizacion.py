@@ -14,20 +14,18 @@ class DistritoSession(BaseSession):
     
     def base2(self):
         return DBSession.query(Distrito).join(Lista) 
-    
 
-    
-    def _guardar_(self, obj, **kw):
+    def _guardar(self, inst, **kw):
         """ Guarda un item """
-        kw_pop(obj, 'nombre', **kw)
-        kw_pop(obj, 'descripcion', **kw)
-        kw_pop(obj, 'lista', **kw) or \
-        kw_pop(obj, 'lista_id', **kw)
-        kw_pop(obj, 'padre', **kw) or \
-        kw_pop(obj, 'padre_id', **kw)
+#        kw_pop(obj, 'nombre', **kw)
+#        kw_pop(obj, 'descripcion', **kw)
+#        kw_pop(obj, 'lista', **kw) or \
+#        kw_pop(obj, 'lista_id', **kw)
+#        kw_pop(obj, 'padre', **kw) or \
+#        kw_pop(obj, 'padre_id', **kw)
         
-        if not obj.lista and kw.has_key('lista_nombre'):
-            obj.lista = lista_session.por_nombre(kw.pop('lista_nombre'))
+        if not inst.lista and kw.has_key('lista_nombre'):
+            inst.lista = lista_session.por_nombre(kw.pop('lista_nombre'))
         
         
     

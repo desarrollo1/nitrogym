@@ -1,0 +1,2 @@
+recursive-include tw/jose/templates *
+recursive-include tw/jose/static *

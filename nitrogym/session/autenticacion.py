@@ -11,13 +11,13 @@ class UsuarioSession(BaseSession):
     
     model = Usuario
     
-    def guardar(self, **kw):
-        """ Guarda un usuario """
-        
-        obj = self.instancia(**kw)
-        kw_pop(obj, 'login', **kw)
-        kw_pop(obj, 'password', **kw)
-        return self.add(obj)
+#    def guardar(self, **kw):
+#        """ Guarda un usuario """
+#        
+#        obj = self.instancia(**kw)
+#        kw_pop(obj, 'login', **kw)
+#        kw_pop(obj, 'password', **kw)
+#        return self.add(obj)
         
         
 class GrupoSession(BaseSession):
@@ -25,13 +25,13 @@ class GrupoSession(BaseSession):
     
     model = Grupo
     
-    def guardar(self, **kw):
-        """ Guarda un grupo """
-        
-        obj = self.instancia(**kw)
-        kw_pop(obj, 'nombre', **kw)
-        kw_pop(obj, 'decripcion', **kw)
-        return self.add(obj)
+#    def guardar(self, **kw):
+#        """ Guarda un grupo """
+#        
+#        obj = self.instancia(**kw)
+#        kw_pop(obj, 'nombre', **kw)
+#        kw_pop(obj, 'decripcion', **kw)
+#        return self.add(obj)
 
             
             
@@ -48,11 +48,11 @@ class PermisoSession(BaseSession):
 #        kw_pop(obj, 'decripcion', **kw)
 #        return self.add(obj)
     
-    def _guardar_(self, obj, **kw):
-        """ Guarda un permiso """
-        
-        kw_pop(obj, 'nombre', **kw)
-        kw_pop(obj, 'decripcion', **kw)
+#    def _guardar_(self, obj, **kw):
+#        """ Guarda un permiso """
+#        
+#        kw_pop(obj, 'nombre', **kw)
+#        kw_pop(obj, 'decripcion', **kw)
             
         
         

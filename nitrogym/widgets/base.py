@@ -6,8 +6,7 @@ from util import form_validator
 from tw.jquery import AjaxForm
 from tw.api import JSLink, js_function, JSSource, Link
 from tw.jquery import jquery_js
-
-
+from formencode.api import Invalid
 
 
 jQuery= js_function('$')
@@ -24,3 +23,19 @@ def update_options(cls, options, d, *args):
         if not x is None:
             options[name] = x
     return options
+
+
+#def validar_master(form, **kw):
+#    d = {}
+#    try:
+#        x = form.validate(kw)
+#    except Invalid, e:
+#        for k, v in e.error_dict.items():
+#            if v.error_dict:
+#                for kk, vv in v.error_dict.items():
+#                    d[k + '.' + kk] = vv
+#            else:
+#                d[k] = v
+#    return d
+
+

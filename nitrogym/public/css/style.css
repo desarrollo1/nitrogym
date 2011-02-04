@@ -317,3 +317,19 @@ font-weight:bold;
 div.clearingdiv {
 clear:both;
 }
+
+
+fieldset
+{
+ border:0px solid RGB(200,200,200);
+ padding:0;
+ margin:0;
+}
+
+input[type="text"], textarea {
+border: 1px solid #D3D3D6;
+color: #535356;
+padding: 3px;
+}
+
+

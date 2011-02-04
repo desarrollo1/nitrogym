@@ -30,11 +30,17 @@ function successForm(responseText, statusText, xhr, form){
     jQuery.each(json, function(name, value){
         /* inserta los mensajes de errores */
         n++;
-		form.find("td").has("* [id='" + form.attr("id") + "_" + name + "']"). 
+		
+		//form.find("td").has("* [id='" + form.attr("id") + "_" + name + "']").first(). 
+		//append("<span class='fielderror'>" + value + "</span>");
+
+
+		form.find("* [id='" + form.attr("id") + "_" + name + "']").parent().
 		append("<span class='fielderror'>" + value + "</span>");
 
+
         //form.find("td").has("* [name='" + name + "']").append("<span class='fielderror'>" + value + "</span>");
-		//alert(value);
+		//alert(name + ' - ' + value);
     });
     
     if (n == 0) {

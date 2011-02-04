@@ -12,6 +12,19 @@ persona_tipo = Table('persona_tipo', metadata,
 )
 
 
+class Ocupacion(DeclarativeBase):
+    __tablename__ = 'ocupacion'
+    
+    id = Column(Integer, primary_key=True)
+    item_id = Column(Integer, ForeignKey('item.id'))
+    inicio = Column(Time)
+    fin = Column(Time)
+    item = relation('Item') #, primaryjoin=id==Item.id)
+    
+    nombre = property(lambda self : self.item.nombre)
+    
+    
+
 class Persona(DeclarativeBase):
     __tablename__ = 'persona'
     
@@ -19,7 +32,7 @@ class Persona(DeclarativeBase):
     id = Column(Integer, primary_key=True)
     tipodoc_id = Column(Integer, ForeignKey('item.id'))
     
-    nrodoc = Column(Integer)
+    nrodoc = Column(Unicode(25))
     _nombre = Column('nombre', Unicode(50), nullable=False)
     _apellido = Column('apellido', Unicode(50))
     
@@ -29,8 +42,8 @@ class Persona(DeclarativeBase):
     creado = Column(DateTime, default=datetime.now())
     modificado = Column(DateTime, default=datetime.now())
     foto_id = Column(Integer, ForeignKey('blob.id'))
-    ocupacion_id = Column(Integer, ForeignKey('item.id'))
-    horario = Column(Time)
+    ocupacion_id = Column(Integer, ForeignKey('ocupacion.id'))
+    #horario = Column(Time)
     #pais_id = Column(Integer, ForeignKey('paises.id'))
     
     
@@ -39,7 +52,7 @@ class Persona(DeclarativeBase):
     # Relaciones:
     tipodoc = relation('Item', primaryjoin=tipodoc_id==Item.id)
     tipos = relation('Item', secondary=persona_tipo)
-    ocupacion = relation('Item', primaryjoin=ocupacion_id==Item.id)
+    ocupacion = relation('Ocupacion') #, primaryjoin=ocupacion_id==Item.id)
     
     # Sininimos:
     email = synonym('_email')
@@ -81,7 +94,7 @@ class Persona(DeclarativeBase):
     
     # util con el widget...    
     tipos_id = property(lambda self : [i.id for i in self.tipos]) # retorna lista de ids del tipo de persona
-    ocupacion_nombre = property(lambda self : self.ocupacion.nombre)
+    #ocupacion_nombre = property(lambda self : self.ocupacion.nombre)
     
     #pais_nombre = property(lambda self: self.pais.nombre) # retorna nombre del pais de la persona.
     
@@ -102,6 +115,9 @@ class RelacionPersona(DeclarativeBase):
     relacion1 = relation('Item', primaryjoin=relacion1_id == Item.id)
     relacion2 = relation('Item', primaryjoin=relacion2_id == Item.id)
     
+    
+    
+
     
     
     

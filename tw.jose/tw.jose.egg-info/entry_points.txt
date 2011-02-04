@@ -1,0 +1,6 @@
+
+        [toscawidgets.widgets]
+        # Register your widgets so they can be listed in the WidgetBrowser
+        widgets = tw.jose
+        samples = tw.jose.samples
+    

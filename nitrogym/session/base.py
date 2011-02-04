@@ -53,9 +53,9 @@ class BaseSession(object):
         """ No usar <base> en esta clase por que se puede modificar en el futuro """
         return DBSession.query(self.model)
     
-    def __call__(self, **kw):
+    def __call__(self, inst=None, **kw):
         if kw:
-            return self.guardar(**kw)
+            return self.guardar(inst, **kw)
         
     def por_id(self, id):
         if id:
@@ -70,32 +70,34 @@ class BaseSession(object):
         if id:
             obj = self.por_id(id)
         else:
-            obj = kw.pop(self.model.__name__.lower(), self.model()) # si ya existe una instancia...
+            #obj = kw.pop(self.model.__name__.lower(), self.model()) # si ya existe una instancia...
+            obj = self.model() #kw.pop(self.model.__name__.lower(), self.model()) # si ya existe una instancia...
         return obj
     
     
-    def guardar(self, **kw):
-        """ Agrega una instancia a la sesion """
+#    def guardar(self, **kw):
+#        """ Agrega una instancia a la sesion """
+#        
+#        obj = self.instancia(**kw)
+#        self._guardar_(obj, **kw)
+#        
+#        if self.debug:
+#            kw.pop('id', None)
+#            if kw:
+#                raise KeyError(kw)
+#        return self.add(obj)
         
-        obj = self.instancia(**kw)
-        self._guardar_(obj, **kw)
-        
-        if self.debug:
-            kw.pop('id', None)
-            if kw:
-                raise KeyError(kw)
-        return self.add(obj)
-        
-    def _save(self, inst, **kw):
-        """ Extension de self.save """
+    def _guardar(self, inst, **kw):
+        """ Extension de self.guardar """
         pass
         
-    def save(self, **kw):
+    def guardar(self, inst=None, **kw):
         """ Esto es util por que relaciona los atributos del modelo con los del kwargs """
-        inst = self.instancia(**kw)
+        if not inst:
+            inst = self.instancia(**kw)
         for i in self.model.__mapper__.iterate_properties:
             kw_pop(inst, i.key, **kw )
-        self._save(inst, **kw)
+        self._guardar(inst, **kw)
         return self.add(inst)
         
 

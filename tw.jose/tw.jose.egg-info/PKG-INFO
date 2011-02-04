@@ -1,0 +1,19 @@
+Metadata-Version: 1.0
+Name: tw.jose
+Version: 0.1a0dev-20110203
+Summary: widget personalizados[D[D[D[D[D[D[D[D[D[D[D[
+Home-page: UNKNOWN
+Author: jose
+Author-email: jaglame@hotmail.com
+License: UNKNOWN
+Description: UNKNOWN
+Keywords: toscawidgets.widgets
+Platform: UNKNOWN
+Classifier: Development Status :: 3 - Alpha
+Classifier: Environment :: Web Environment
+Classifier: Environment :: Web Environment :: ToscaWidgets
+Classifier: Topic :: Software Development :: Libraries :: Python Modules
+Classifier: Topic :: Software Development :: Widget Sets
+Classifier: Intended Audience :: Developers
+Classifier: Operating System :: OS Independent
+Classifier: Programming Language :: Python

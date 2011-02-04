@@ -17,13 +17,13 @@ class ListaSession(BaseSession):
     """
     model = Lista
     
-    def guardar(self, **kw):
-        """ Guarda una lista """
-        
-        lista = self.instancia(**kw)
-        kw_pop(lista, 'nombre', **kw)
-        kw_pop(lista, 'descripcion', **kw)
-        return self.add(lista)
+#    def guardar(self, **kw):
+#        """ Guarda una lista """
+#        
+#        lista = self.instancia(**kw)
+#        kw_pop(lista, 'nombre', **kw)
+#        kw_pop(lista, 'descripcion', **kw)
+#        return self.add(lista)
             
     def por_nombre(self, nombre):
         return self.base().filter_by(nombre=nombre).first()
@@ -39,14 +39,14 @@ class ItemSession(BaseSession):
     def base2(self):
         return DBSession.query(Item).join(Lista) 
 
-    def _guardar_(self, item, **kw):
-        """ Guarda un item """
-
-        #item = self.instancia(**kw)
-        kw_pop(item, 'nombre', **kw)
-        kw_pop(item, 'descripcion', **kw)
-        kw_pop(item, 'lista', **kw) or \
-        kw_pop(item, 'lista_id', **kw)
+#    def _guardar_(self, item, **kw):
+#        """ Guarda un item """
+#
+#        #item = self.instancia(**kw)
+#        kw_pop(item, 'nombre', **kw)
+#        kw_pop(item, 'descripcion', **kw)
+#        kw_pop(item, 'lista', **kw) or \
+#        kw_pop(item, 'lista_id', **kw)
         #return self.add(item)
     
     def por_nombre(self, nombre, lista_nombre):
